@@ -2,7 +2,7 @@
 
 ![Electra Social Pay](https://i.imgur.com/rwlGj2r.png)
 
-Send Payments with Electracoin across various social media platforms. 
+Send Payments with Electracoin across various social platforms. 
 Currently Supports Twitter, Discord
 
 In Progress: Telegram, Slack
