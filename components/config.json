@@ -1,0 +1,20 @@
+{
+    "prefix":"!",
+    "twitterPower":"off",
+    "twitConsumer_key":"Key_Goes_Here",
+    "twitConsumer_secret":"Consumer_Secret_Here",
+    "twitAccess_token_key":"Access_token_key",
+    "twitAccess_token_secret":"Access_Token_Secret",
+    "yourBotName":"@YourName",
+    "bot_id": "######" ,
+    "personal_id": "######",
+    "discordPower": "off",
+    "token": "discord_token",
+    "owner":"discord_owner_id",
+    "mainChannel":"discord_main_chat_channel_id",
+    "bot":"bot_id",
+    "needWallet":"on",
+    "kap_port":"5788",
+    "kap_user":"user",
+    "kap_pass":"password"
+}
