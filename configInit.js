@@ -248,15 +248,15 @@ if(config.needWallet === 'on') {
 fs.writeFile(__dirname + '\\components\\wallet\\Electra_Blockchain\\Electra.conf', Econfig, (err) => {
     if (err) throw err;
     console.log('Electra.conf has been Created Successfully');
+    let batFile = `Electra-qt.exe -server -debug -debugnet -logtimestamps -conf=${__dirname}\\components\\wallet\\Electra_blockchain\\Electra.conf -datadir=${__dirname}\\components\\wallet\\Electra_blockchain`;
+
+    fs.writeFile(__dirname + '\\runme.bat', batFile, (err) => {
+        if (err) throw err;
+        console.log('Runme.bat has been Created Successfully');
+    });
 });
 
 
-let batFile = `Electra-qt.exe -server -debug -debugnet -logtimestamps -conf=${__dirname}\\components\\wallet\\Electra_blockchain\\Electra.conf -datadir=${__dirname}\\components\\wallet\\Electra_blockchain`;
-
-fs.writeFile(__dirname + '\\runme.bat', batFile, (err) => {
-    if (err) throw err;
-    console.log('Runme.bat has been Created Successfully');
-});
 
 } else if(config.needWallet === 'off') {
     console.log('needWallet set OFF... Listening For RPC Commands')
