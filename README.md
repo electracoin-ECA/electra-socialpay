@@ -24,8 +24,6 @@ Twitter:
 - Tweet The Following to Pay
     - !pay @theirScreenName Amount
 
-    There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
-
 Discord:
 - Direct Message This to Set Address:
     - !address YourAddress
@@ -33,7 +31,14 @@ Discord:
 - Message The Following In Your mainChannel to Pay:
     - !pay @theirName Amount
 
-    There is one bug I've found with getting the userID from their Screen name... Needs further investigation
+    
+### Known Bugs / Issues
+
+    -On Initial Setup with needWallet turned On, you may receive an error saying runme.bat is not recognized, or error code 0 or 1. 
+    -There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
+    -There is one bug I've found with getting the userID from their Screen name... Needs further investigation
+    
+    Please open an Issue on this repository if you run into a problem that is not documented.
 
 
 ### Prerequisites
