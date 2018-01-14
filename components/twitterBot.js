@@ -6,7 +6,8 @@ const twitterBot = new Twitter({
     consumer_key: config.twitConsumer_key,
     consumer_secret: config.twitConsumer_secret,
     access_token_key: config.twitAccess_token_key,
-    access_token_secret: config.twitAccess_token_secret
+    access_token_secret: config.twitAccess_token_secret,
+    timeout_ms: 06*1000
 });
 const BotUserName = config.yourBotName;
 const twitFile = ('./components/twitAddresses.json');
@@ -36,17 +37,17 @@ let twitInit = () => {
                 return;
             }
 
-            if (command === 'pay' && tweet.user.id === config.bot_id && !args[1] || command === 'pay' && tweet.user.id === config.personal_id && !args[1]) {
+            else if (command === 'pay' && tweet.user.id === config.bot_id && !args[1] || command === 'pay' && tweet.user.id === config.personal_id && !args[1]) {
                 console.log(`No User Specified`);
                 return;
             }
 
-            if (command === 'pay' && tweet.user.id === config.bot_id && !args[2] || command === 'pay' && tweet.user.id === config.personal_id && !args[2]) {
+            else if (command === 'pay' && tweet.user.id === config.bot_id && !args[2] || command === 'pay' && tweet.user.id === config.personal_id && !args[2]) {
                 console.log(`No Amount Specified`);
                 return;
             }
 
-            if (command === 'pay' && tweet.user.id === config.bot_id || command === 'pay' && tweet.user.id === config.personal_id) {
+            else if (command === 'pay' && tweet.user.id === config.bot_id || command === 'pay' && tweet.user.id === config.personal_id) {
                 let replyToThis = addressCall;
                 //Do The Thing With The Stuff
                 console.log(`Command: ${args[0]}`);
@@ -68,7 +69,7 @@ let twitInit = () => {
                             console.log('Nothing Here');
                             twitterBot.post('statuses/update', {status: `(◕‿◕✿) Hey  ${sendTo}\n ${tweetUser} is Trying To Send You ${amt} $ECA! \n Link Your Public Wallet Address By Tweeting the following: \n !address ${replyToThis} Your_Address`});
                             return;
-                        } else {
+                        } else if (obj[sendToID]) {
                             console.log(`User ID Found: Sending Payment To: ${obj[sendToID]}`);
                             kapitalize.sendToAddress(obj[sendToID], amt);
                             twitterBot.post('statuses/update', {status: `${addressCall} Just Sent ${sendTo} ${amt} $ECA! \n #ECA #Electracoin @ElectracoinECA`})
@@ -85,19 +86,19 @@ let twitInit = () => {
                 });
             }
 
-            if (command === 'address' && args[1] !== config.yourTwitname || command === 'address' && args[1] !== config.yourBotName) {
+            else if (command === 'address' && args[1] !== config.yourBotName) {
                 console.log(`User Failed - @user <<< Error @Username`);
                 console.log(addressCall);
                 console.log(`Provided:  ${args[1]}`);
                 return;
             }
 
-            if (command === 'address' && args[1] == config.yourBotName && !args[2] || command === 'address' && args[1] == config.yourTwitname && !args[2]) {
+            else if (command === 'address' && args[1] == config.yourBotName && !args[2] || command === 'address' && args[1] == config.yourTwitname && !args[2]) {
                 console.log(`User Failed - Address <<< Error: No Address`);
                 return;
             }
 
-            if (command === 'address' && args[1] === config.yourBotName || command === 'address' && args[1] === config.yourTwitname) {
+            else if (command === 'address' && args[1] === config.yourBotName || command === 'address' && args[1] === config.yourTwitname) {
                 let address = args[2];
                 console.log(address);
                 let newInfo = (`"${tweeterID}": "${address}"`);
@@ -117,7 +118,7 @@ let twitInit = () => {
                                 return;
                             }
                         })
-                    } else {
+                    } else if (obj[tweeterID]) {
                         let oldAddress = obj[tweeterID];
                         let needle = (`"${tweeterID}":"${oldAddress}"`);
                         let newAddress = (`"${tweeterID}":"${address}"`);
@@ -134,7 +135,7 @@ let twitInit = () => {
                     }
                 })
                 console.log(`Adding Info: Name: ${tweetUser} --- Address: ${address}`);
-                twitterBot.post('statuses/update', {status: `@${tweetUser} You are all set up to receive #ECA Payments! You Can Repeat This Anytime To Change! #ECA #Electracoin @ElectracoinECA`})
+                twitterBot.post('statuses/update', {status: `${tweetUser} You are all set up to receive #ECA Payments! You Can Repeat This Anytime To Change! #ECA #Electracoin @ElectracoinECA`})
                 .then((tweet) => {
                     console.log(`Tweet Sent To: ${tweetUser}`);
                     return;

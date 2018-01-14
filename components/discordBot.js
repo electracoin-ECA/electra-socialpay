@@ -7,10 +7,6 @@ const client = new Discord.Client();
 const users = new Discord.Collection();
 const discFile = (__dirname + '\\discordAddresses.json');
 
-client.on("ready", () => {
-    console.log("I am ready!");
-});
-
 let discordInit = () => {
 
     console.log(`Connecting To Discord...`);
