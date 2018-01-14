@@ -24,7 +24,7 @@ Twitter:
 - Tweet The Following to Pay
     - !pay @theirScreenName Amount
 
-    There are a few bugs with twitter such as socket time outs. Will need further improvements, but currently works.
+    There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
 
 Discord:
 - Direct Message This to Set Address:
