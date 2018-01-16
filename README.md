@@ -71,6 +71,7 @@ Future Plans: Slack Support, Refractor Code, Add Electron GUI with Wallet Functi
 * [Kapitalize](https://github.com/shamoons/Kapitalize) - Industrious Bitcoin Client For Node
 * [DiscordJS](https://discord.js.org/#/) - Discord Bot Module
 * [twitter](https://github.com/desmondmorris/node-twitter) - Client Library for Twitter Rest and Streaming API's
+* [node-telegram-bot-api] (https://github.com/yagop/node-telegram-bot-api) - Telegram Bot API for NodeJS
 
 ## Authors
 
