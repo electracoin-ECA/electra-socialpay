@@ -1,6 +1,8 @@
 const twitter = require("./components/twitterbot");
 const kapitalize = require('./components/kapitalize');
 const discord = require("./components/discordBot");
+let telegram = require('./components/telegramBot');
+const teleUsers = './components/teleUsers.json';
 const twitFile = ('./components/twitAddresses.json');
 const discFile = ('./components/discordAddresses.json');
 const config = require('./components/config.json');
@@ -26,8 +28,15 @@ if(config.needWallet === 'on') {
             discord.discordInit();
             console.log(`Discord Has Connected...`);
         } else if (config.discordPower === 'off') {
-            console.log(`Discord Set OFF.... Not Initialized...`)
-        };
+            console.log(`Discord Set OFF.... Not Initialized...`);
+        }
+
+        if(config.telegramPower === 'on') {
+            telegram.teleInit();
+            console.log(`Telegram Has Connected...`);
+        } else if (config.telegramPower === 'off') {
+            console.log(`Telegram Set OFF... Not Initialized...`);
+        }
 
     bat.on('exit', (code) => {
         console.log(`Child exited with code ${code}`);
@@ -48,6 +57,13 @@ if(config.needWallet === 'on') {
             console.log(`Discord Has Connected...`);
         } else if (config.discordPower === 'off') {
             console.log(`Discord Set OFF.... Not Initialized...`)
+        }
+
+        if(config.telegramPower === 'on') {
+            telegram.teleInit();
+            console.log(`Telegram Has Connected...`);
+        } else if (config.telegramPower === 'off') {
+            console.log(`Telegram Set OFF... Not Initialized...`);
         };
 
 } else {

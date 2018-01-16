@@ -4,10 +4,11 @@
   "description": "ECA Twitter Payment Bot",
   "main": "app.js",
   "dependencies": {
+    "discord.js": "^11.2.1",
     "jsonfile": "^4.0.0",
     "kapitalize": "^0.3.3",
-    "twitter": "^1.7.1",
-    "discord.js": "^11.2.1"
+    "node-telegram-bot-api": "^0.30.0",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {},
   "scripts": {

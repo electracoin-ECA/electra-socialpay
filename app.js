@@ -7,6 +7,9 @@ const config = require('./components/config.json');
 const { spawn } = require('child_process');
 const EconfigInit = require('./configInit.js');
 
+let userOS = process.platform;
+console.log(`${userOS} detected to be in Use`);
+
 if(config.needWallet === 'on') {
     console.log(`needWallet ON: Setting Up Wallet...`);
     const bat = spawn('cmd.exe', ['/c', 'runme.bat'])

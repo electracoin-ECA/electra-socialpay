@@ -17,30 +17,38 @@ Youtube Tutorial: https://youtu.be/LI2XdWNMWDY
 
 General Commands To Use:
 
+!!! NEWEST UPDATE !!!
+
+Telegram: 
+
+-Message The Bot To Set Address:
+    - !address YourECAaddress
+    
+- In Group Say This To Pay:
+    - !pay @username amount
+        -console will show errors
+        
+        USERS MUST MESSAGE BOT FIRST TO RECEIVE MESSAGES FROM BOT
+        Telegram is tricky set up. Users MUST has username set, then their username is saved with their userID. You can then @username and you will be able to interact with user. To avoid spam the app is set up to Message Users directly instead of in chat/group.
+        
+
 Twitter:
 - Tweet The Following To Set Address:
-    - !address @yourBotName address
+    - !address @yourBotName YourECAaddress
 
 - Tweet The Following to Pay
     - !pay @theirScreenName Amount
 
+    There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
+
 Discord:
 - Direct Message This to Set Address:
-    - !address YourAddress
+    - !address YourECAaddress
 
 - Message The Following In Your mainChannel to Pay:
     - !pay @theirName Amount
 
-    
-### Known Bugs / Issues
-
-    -On Initial Setup with needWallet turned On, you may receive an error saying runme.bat is not recognized, or error code 0 or 1.
-    
-    -There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
-    
-    -There is one bug with Discord that occurs when getting the userID from their Screen name... Needs further investigation
-    
-    Please open an Issue on this repository if you run into a problem that is not documented.
+    There is one bug I've found with getting the userID from their Screen name... Needs further investigation
 
 
 ### Prerequisites
