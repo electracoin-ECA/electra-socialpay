@@ -11,6 +11,9 @@ const twitterBot = new Twitter({
 });
 const BotUserName = config.yourBotName;
 const twitFile = ('./components/twitAddresses.json');
+const yourTwitID = parseInt(config.yourTwitID);
+const yourBotID = parseInt(config.yourBotID);
+
 
 let twitInit = () => {
 
@@ -25,29 +28,31 @@ let twitInit = () => {
             const args = tweet.text.slice(config.prefix.length).trim().split(/ +/g);
             const command = args[0].toLowerCase();
             console.log(`
+            Your Twit ID: ${yourTwitID}
+            Your Bot ID: ${yourBotID}
             New Notification From: ${JSON.stringify(tweet.user.name)}
             user id: ${JSON.stringify(tweet.user.id)}
             Tweet Content: ${JSON.stringify(tweet.text)}           
             `);
 
-            if (command === 'pay' && tweet.user.id === !config.bot_id || command === 'pay' && tweet.user.id === !config.personal_id) {
+            if (command === 'pay' && tweet.user.id === !yourBotID || command === 'pay' && tweet.user.id === !yourTwitID) {
                 console.log(`Someone Is Trying To Pay Someone, Maybe With Another Bot`);
                 console.log('userid: ' + tweet.user.id);
-                console.log('configID: ' + config.personal_id);
+                console.log('Ownerd ID: ' + yourTwitID);
                 return;
             }
 
-            else if (command === 'pay' && tweet.user.id === config.bot_id && !args[1] || command === 'pay' && tweet.user.id === config.personal_id && !args[1]) {
+            else if (command === 'pay' && tweet.user.id === yourBotID && !args[1] || command === 'pay' && tweet.user.id === yourTwitID && !args[1]) {
                 console.log(`No User Specified`);
                 return;
             }
 
-            else if (command === 'pay' && tweet.user.id === config.bot_id && !args[2] || command === 'pay' && tweet.user.id === config.personal_id && !args[2]) {
+            else if (command === 'pay' && tweet.user.id === yourBotID && !args[2] || command === 'pay' && tweet.user.id === yourTwitID && !args[2]) {
                 console.log(`No Amount Specified`);
                 return;
             }
 
-            else if (command === 'pay' && tweet.user.id === config.bot_id || command === 'pay' && tweet.user.id === config.personal_id) {
+            else if (command === 'pay' && tweet.user.id === yourBotID || command === 'pay' && tweet.user.id === yourTwitID) {
                 let replyToThis = addressCall;
                 //Do The Thing With The Stuff
                 console.log(`Command: ${args[0]}`);
@@ -55,9 +60,14 @@ let twitInit = () => {
                 console.log(`sendTo: ${sendTo}`);
                 let params = { screen_name: `${sendTo}`};
                 console.log(params);
-                let amtString = args[2];
-                let amt = (parseInt(amtString));
-                console.log(amt);
+                // let amtString = args[2];
+                // let amt = (parseInt(amtString));
+                // console.log(amt);
+                let amtArg = parseFloat(args[2]);
+                let amtStr = amtArg.toFixed(4);
+                let amt = Number(amtStr);
+                console.log(amt)
+    
                 twitterBot.get('users/show', params, (err,data,response) => {
                     let sendToID = (data.id);
                     console.log(`Tweeter ID: ${sendToID}`);

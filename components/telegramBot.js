@@ -19,6 +19,9 @@ teleBot.on('polling_error', (error) => {
 
   teleBot.on('message', (msg) => {
 
+
+    
+
       let unix = Math.floor(new Date() / 1000);
       let callName = '@ECA_Tip_Bot';
       let msgType = msg.chat.type;
@@ -28,6 +31,10 @@ teleBot.on('polling_error', (error) => {
       let userName = msg.from.username;
       let msgCont = msg.text;
       const args = msgCont.slice(config.prefix.length).trim().split(/ +/g);
+      if (!msgCont || msgCont.slice == 'undefined') {
+        console.log(`undefined msg Error is happening`);
+        return;
+    }
       let command = args[0].toLowerCase();
 
       if (msg.date >= (unix-5)) {
@@ -40,10 +47,6 @@ teleBot.on('polling_error', (error) => {
         // Command: ${command}`);
 
 
-      if (!msgCont) {
-        console.log(`undefined msg Error is happening`);
-        return;
-    }
 
     if (!msgCont.startsWith(config.prefix)) {
         console.log(`No Prefix Was Detected`);

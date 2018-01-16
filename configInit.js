@@ -2,6 +2,8 @@ const fs = require('fs');
 const config = require('./components/config.json');
 
 let Econfig = `
+splash=0
+min=1
 datadir=${__dirname}\\components\\wallet\\Electra_Blockchain\\
 listen=1
 daemon=1

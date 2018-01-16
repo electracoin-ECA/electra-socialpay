@@ -11,7 +11,6 @@ let discordInit = () => {
 
     console.log(`Connecting To Discord...`);
 
-
     //MAIN CHANNEL / SERVER
     client.on("message", (message) => {
         //splits args after !
@@ -21,66 +20,50 @@ let discordInit = () => {
         //shifts to LC
         const command = args.shift().toLowerCase();
         //Stops if no prefix, if Author is BOT, or if Channel is not Main-Channel
-        if (!message.content.startsWith(config.prefix) || message.author.bot || message.channel.id !== config.mainChannel || message.author.id !== config.owner) return;
+        if (!message.content.startsWith(config.prefix) || message.author.bot || message.channel.id !== config.mainChannel || message.author.id !== config.yourDiscordID) return;
         
-        if (command === "pay" && (!args[0]) && message.author.id === config.owner) {
+        else if (command === "pay" && (!args[0]) && message.author.id === config.yourDiscordID) {
             message.reply(`(╯°□°）╯︵ʎɐd \n Who?!? \n hint: !pay @username`);
             return;
         }
-
-        if (command === "pay" && args[1] === "lambo" && message.author.id === config.owner) {
-            message.reply(` (⌐■_■)ノ Vroom Vroom `);
-            return;
-        }
         
-        if (command === "pay") {
+        else if (command === "pay") {
             // Set Tipper As Message Author
             let tipper = message.author.id;
             // Sets @Username as sendTo
             let sendToArg = args[0];
             // Parses Args2 to Integer
-            let amount = (parseInt(args[1]));
-            if (!Number.isInteger(amount)) {
-                console.log('Payment Amount Not Number');
-                    client.fetchUser(tipper)
-                    .then(user => {user.send(`(◕‿◕✿) \n Payment Amount Must Be A Number! You Sent ${args[1]}`)});
-                    message.reply(`(◕‿◕✿) \n Payment Amount Must Be A Number! You Sent ${args[1]}`);
-                return;
-            } else {
-            
+            let amtArg = parseFloat(args[1]);
+            let amtStr = amtArg.toFixed(4);
+            let amt = Number(amtStr);    
             // Finds >
             console.log(`sendToArg: ${sendToArg}`)
             let lastBit = sendToArg.lastIndexOf('>');
             // Strips Off Extra Characters
             let sendTo = sendToArg.substr(2,lastBit-2);
             console.log(`sendTo: ${sendTo}`);
-
-
             // Reads Addresses.JSON        
             jsonfile.readFile(discFile, (err, obj) => {
                 if (err) {
-                    console.log("(ノಠ益ಠ)ノ彡┻━┻" + err);
+                    console.log(`Error Reading discordAddresses.json: ${err}`);
                 // If No Address
                 } else if (!obj[sendTo]) {
-                    console.log(`User Address Not Found`);
-                    // Message Tip Sender
-                    client.fetchUser(tipper)
-                    .then(user => {user.send(`(ノಠ益ಠ)ノ \n This Person Has Not Set Up A Payment Address... Message Them And Find Out Why!`)})
+                    console.log(`User Address Not Found: Sending DM`);
                     // Message Tip Received
                     client.fetchUser(sendTo)
-                    .then(user => {user.send(`(◕‿◕✿) \n Hi ${sendToArg}! \n Someone Just Tried Sending You A Payment \n But You Have No Address Set Up! \n Reply With The Following To Set Up Address: \n !address YourECA_Address`)});
+                    .then(user => {user.send(`Hi ${sendToArg}! \n Someone Just Tried Sending You A Payment \n But You Have No Address Set Up! \n Reply With The Following To Set Up Address: \n !address YourECA_Address`)});
                     return;
                 // If Address Is Found
-                } else {
+                } else if (obj[sendTo]) {
                     // SEND TIP GOES HERE
-                    kapitalize.sendToAddress(obj[sendTo],amount);
+                    kapitalize.sendToAddress(obj[sendTo],amt);
                     //Log and Reply Tip Amount and Receiver
-                    console.log(`Sent ${amount} ECA Sent To: ${obj[sendTo]}`);
-                    message.reply(`Sent ${amount} ECA To ${sendToArg}`);
+                    console.log(`Sent ${amt} ECA Sent To: ${obj[sendTo]}`);
+                    message.reply(`Sent ${amt} ECA To ${sendToArg}`);
                     return;
                 }
             })
-            }
+            
         }
     });
 
@@ -95,9 +78,9 @@ let discordInit = () => {
         //shifts to LC
         const command = args.shift().toLowerCase();
         //Stops if no prefix, if Author is BOT, or if Channel is not Private
-        if (!message.content.startsWith(config.prefix) || message.author.bot || message.channel.id == config.bot) return;
+        if (!message.content.startsWith(config.prefix) || message.author.bot || message.channel.id == config.discordBotID) return;
         
-        if(command === "address" && message.channel.id !== config.mainChannel ) {
+        else if(command === "address" && message.channel.id !== config.mainChannel ) {
 
             if(address === undefined) {
                 message.reply(`!address YourAddressHere \n ^^^^^is the correct way^^^^^`);
@@ -105,7 +88,7 @@ let discordInit = () => {
                 return;
             }
 
-            if(address === `Your_Address`) {
+            else if(address === `Your_Address`) {
                 message.reply(`Type Your Public Address...`);
                 console.log(`${message.author.id} Messed Up Up`);
                 return;
@@ -115,7 +98,7 @@ let discordInit = () => {
             let newInfo = (`"${currentUser}": "${address}"`);
             jsonfile.readFile(discFile, (err, obj) => {
                 if (err) {
-                    console.log("(ノಠ益ಠ)ノ彡┻━┻" + err);
+                    console.log(`Error Reading discAddresses.json: ${err}`);
                     return;
                 // If No Address
                 } else if (!obj[currentUser]) {
@@ -129,8 +112,8 @@ let discordInit = () => {
                     return; 
                         } else {
                     //Logs & Replies With Saved Information
-                    console.log(`(◕‿◕✿) Information Saved! ${message.author.username}. Address: ${newObj[currentUser]}`);        
-                    message.reply(`(◕‿◕✿) Information Saved! Address: ${newObj[currentUser]}`);
+                    console.log(`Information Saved! ${message.author.username} Address: ${newObj[currentUser]}`);        
+                    message.reply(`Information Saved! Address: ${newObj[currentUser]}`);
                     return;    
                         }
                     })
@@ -220,7 +203,7 @@ let discordInit = () => {
     // });
 
     // Turns On The Bot, Dude.
-    client.login(config.token);
+    client.login(config.discordToken);
 };
 
 module.exports = { 

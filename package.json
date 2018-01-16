@@ -4,6 +4,7 @@
   "description": "ECA Twitter Payment Bot",
   "main": "app.js",
   "dependencies": {
+    "@slack/client": "^3.15.0",
     "discord.js": "^11.2.1",
     "jsonfile": "^4.0.0",
     "kapitalize": "^0.3.3",

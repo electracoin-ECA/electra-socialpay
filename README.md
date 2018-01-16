@@ -1,11 +1,12 @@
-# ECA Social Pay V0.2.0
+# ECA Social Pay V0.4.0
 
 ![Electra Social Pay](https://i.imgur.com/rwlGj2r.png)
 
 Send Payments with Electracoin across various social platforms. 
-Currently Supports Twitter, Discord
 
-In Progress: Telegram, Slack
+Currently Supports Twitter, Discord, Slack, Telegram
+
+In Progress: Cross OS Support, UI built w/ Electron
 
 ## Getting Started
 
@@ -28,41 +29,52 @@ Telegram:
     - !pay @username amount
         -console will show errors
         
-        USERS MUST MESSAGE BOT FIRST TO RECEIVE MESSAGES FROM BOT
+        * USERS MUST MESSAGE BOT FIRST TO RECEIVE MESSAGES FROM BOT
         Telegram is tricky set up. Users MUST has username set, then their username is saved with their userID. You can then @username and you will be able to interact with user. To avoid spam the app is set up to Message Users directly instead of in chat/group.
         
 
 Twitter:
-- Tweet The Following To Set Address:
-    - !address @yourBotName YourECAaddress
+* Tweet The Following To Set Address:
+    * !address @yourBotName YourECAaddress
 
-- Tweet The Following to Pay
-    - !pay @theirScreenName Amount
+* Tweet The Following to Pay
+    * !pay @theirScreenName Amount
 
-    There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
+    * There are a few bugs with twitter such as socket time outs if you connect multiple times too quickly. Will need further improvements, but currently works.
 
 Discord:
-- Direct Message This to Set Address:
-    - !address YourECAaddress
+* Direct Message This to Set Address:
+    * !address YourECAaddress
 
-- Message The Following In Your mainChannel to Pay:
-    - !pay @theirName Amount
+* Message The Following In Your mainChannel to Pay:
+    * !pay @theirName Amount
 
-    There is one bug I've found with getting the userID from their Screen name... Needs further investigation
+        *There is one bug I've found with getting the userID from their Screen name... Needs further investigation
 
+Slack:
+* Message in chat or directly to Set Address:
+    * !address YourECAaddress
+    
+* To Pay:
+    * !pay @username amount
+        * No known bugs at this time.
 
 ### Prerequisites
 
-NodeJS
-Discord ID if using
-Twitter ID if using
-Electra Wallet/Funds
+* NodeJS
+* Discord ID if using
+* Twitter ID if using
+* Slack ID if using
+* Telegram ID if using
+* Electra Wallet/Funds
 
 ## Release Info
 
 * v0.1 - Support For Only Discord
 * v0.2 - Support For Twitter Added, Buttons To Not Use Certain Platforms, Wallet Built In/Optional
-* v0.3 - Support For Telegram Added, Payments to 5th (0.00000) added
+* v0.3 - Support For Telegram Added, Payments to 4th (0.0000) added
+* v0.4 - Support For Slack Added, Config takes all strings, config keys made more specific. Wallet no 
+            longer starts with splash and is minimized
 
 Future Plans: Slack Support, Refractor Code, Add Electron GUI with Wallet Functionality.
 
