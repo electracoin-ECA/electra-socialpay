@@ -30,6 +30,16 @@ teleBot.on('polling_error', (error) => {
       const args = msgCont.slice(config.prefix.length).trim().split(/ +/g);
       let command = args[0].toLowerCase();
 
+      if (msg.date >= (unix-5)) {
+        console.log(`New Telegram Message:
+        // msgType: ${msgType}
+        // Chat ID: ${chatID}
+        // User ID: ${userID}
+        // UserName: ${userName}
+        // Message Content: ${msgCont}
+        // Command: ${command}`);
+
+
       if (!msgCont) {
         console.log(`undefined msg Error is happening`);
         return;
@@ -39,16 +49,6 @@ teleBot.on('polling_error', (error) => {
         console.log(`No Prefix Was Detected`);
         return;
     }
-
-      
-      if (msg.date >= (unix-5)) {
-          console.log(`New Telegram Message:
-          // msgType: ${msgType}
-          // Chat ID: ${chatID}
-          // User ID: ${userID}
-          // UserName: ${userName}
-          // Message Content: ${msgCont}
-          // Command: ${command}`);
 
         if (userName !== 'undefined') {
             
