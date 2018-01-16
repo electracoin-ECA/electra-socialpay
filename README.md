@@ -32,6 +32,8 @@ Telegram:
         * USERS MUST MESSAGE BOT FIRST TO RECEIVE MESSAGES FROM BOT
         Telegram is tricky set up. Users MUST has username set, then their username is saved with their userID. You can then @username and you will be able to interact with user. To avoid spam the app is set up to Message Users directly instead of in chat/group.
         
+        * TypeError Found.. Does Not Stop Application but will show in console. Will fix soon
+        
 
 Twitter:
 * Tweet The Following To Set Address:
@@ -76,7 +78,7 @@ Slack:
 * v0.4 - Support For Slack Added, Config takes all strings, config keys made more specific. Wallet no 
             longer starts with splash and is minimized
 
-Future Plans: Slack Support, Refractor Code, Add Electron GUI with Wallet Functionality.
+Future Plans: Refractor Code, Add Electron GUI with Wallet Functionality.
 
 ## Built With
 
