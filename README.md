@@ -1,12 +1,25 @@
-# ECA Social Pay V0.4.0
+# Electra SocialPay
 
 ![Electra Social Pay](https://i.imgur.com/rwlGj2r.png)
 
-Send Payments with Electracoin across various social platforms. 
+Send Payments with Electracoin across various social platforms.
 
 Currently Supports Twitter, Discord, Slack, Telegram
 
-In Progress: Cross OS Support, UI built w/ Electron
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/v/electra-socialpay.svg?style=flat-square)](https://www.npmjs.com/package/electra-socialpay)
+[![Travis](https://img.shields.io/travis/Electra-project/electra-socialpay.svg?style=flat-square)](https://travis-ci.org/Electra-project/electra-socialpay)
+[![David](https://img.shields.io/david/Electra-project/electra-socialpay.svg?style=flat-square)](https://david-dm.org/Electra-project/electra-socialpay)
+[![David](https://img.shields.io/david/dev/Electra-project/electra-socialpay.svg?style=flat-square)](https://david-dm.org/InspiredBeings/electra-socialpay)
+
+[![NSP Status](https://nodesecurity.io/orgs/electra-project/projects/5a4f077f-c8e4-421c-a886-04c8613c6365/badge)](https://nodesecurity.io/orgs/electra-project/projects/5a4f077f-c8e4-421c-a886-04c8613c6365)
+[![Known Vulnerabilities](https://snyk.io/test/github/Electra-project/electra-socialpay/badge.svg)](https://snyk.io/test/github/Electra-project/electra-socialpay)
+
+
+## Roadmap
+
+- Cross OS Support
+- UI built w/ Electron
 
 ## Getting Started
 
@@ -20,20 +33,20 @@ General Commands To Use:
 
 !!! NEWEST UPDATE !!!
 
-Telegram: 
+Telegram:
 
 -Message The Bot To Set Address:
     - !address YourECAaddress
-    
+
 - In Group Say This To Pay:
     - !pay @username amount
         -console will show errors
-        
+
         * USERS MUST MESSAGE BOT FIRST TO RECEIVE MESSAGES FROM BOT
         Telegram is tricky set up. Users MUST has username set, then their username is saved with their userID. You can then @username and you will be able to interact with user. To avoid spam the app is set up to Message Users directly instead of in chat/group.
-        
+
         * TypeError Found.. Does Not Stop Application but will show in console. Will fix soon
-        
+
 
 Twitter:
 * Tweet The Following To Set Address:
@@ -56,7 +69,7 @@ Discord:
 Slack:
 * Message in chat or directly to Set Address:
     * !address YourECAaddress
-    
+
 * To Pay:
     * !pay @username amount
         * No known bugs at this time.
@@ -75,7 +88,7 @@ Slack:
 * v0.1 - Support For Only Discord
 * v0.2 - Support For Twitter Added, Buttons To Not Use Certain Platforms, Wallet Built In/Optional
 * v0.3 - Support For Telegram Added, Payments to 4th (0.0000) added
-* v0.4 - Support For Slack Added, Config takes all strings, config keys made more specific. Wallet no 
+* v0.4 - Support For Slack Added, Config takes all strings, config keys made more specific. Wallet no
             longer starts with splash and is minimized
 
 Future Plans: Refractor Code, Add Electron GUI with Wallet Functionality.
