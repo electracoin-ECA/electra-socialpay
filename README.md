@@ -7,7 +7,6 @@ Send Payments with Electracoin across various social platforms.
 Currently Supports Twitter, Discord, Slack, Telegram
 
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![npm](https://img.shields.io/npm/v/electra-socialpay.svg?style=flat-square)](https://www.npmjs.com/package/electra-socialpay)
 [![Travis](https://img.shields.io/travis/Electra-project/electra-socialpay.svg?style=flat-square)](https://travis-ci.org/Electra-project/electra-socialpay)
 [![David](https://img.shields.io/david/Electra-project/electra-socialpay.svg?style=flat-square)](https://david-dm.org/Electra-project/electra-socialpay)
 [![David](https://img.shields.io/david/dev/Electra-project/electra-socialpay.svg?style=flat-square)](https://david-dm.org/InspiredBeings/electra-socialpay)
