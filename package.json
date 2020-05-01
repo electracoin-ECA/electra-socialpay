@@ -9,15 +9,19 @@
     "jsonfile": "^4.0.0",
     "kapitalize": "^0.3.3",
     "node-telegram-bot-api": "^0.30.0",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [
     "ECA"
   ],
   "author": "Scibot-ECA",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
